@@ -4,21 +4,25 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
 interface Props {
-  income: number;
-  spent: number;
-  data?: number[];
-  lablel?: string;
-  labels: string[];
+  // income: number;
+  // spent: number;
+  barData?: number[];
+  titleLabel?: string;
+  barLabels?: string[];
 }
 
-const BarChart = ({ income, spent }: Props) => {
-  const saved = income - spent;
+const BarChart = ({
+  barData = [0, 0, 0, 0],
+  titleLabel = "My Bar chart",
+  barLabels = ["1", "2", "3", "4"],
+}: Props) => {
+  // const saved = income - spent;
   const data = {
-    labels: ["5 Years", "10 Years", "15 Years", "20 Years"],
+    labels: barLabels,
     datasets: [
       {
-        label: "Future Saved at 0% interest",
-        data: [saved * 60, saved * 120, saved * 180, saved * 240],
+        label: titleLabel,
+        data: barData,
         backgroundColor: [
           "rgba(4, 255, 34, 0.23)", // bar background color
         ],
@@ -36,7 +40,7 @@ const BarChart = ({ income, spent }: Props) => {
         labels: {
           color: "white", // legend font color
           font: {
-            size: 20,
+            size: 16,
           },
         },
       },
@@ -61,12 +65,11 @@ const BarChart = ({ income, spent }: Props) => {
     },
   };
   return (
-    <div className="w-7/8 h-80 md:h-100 flex flex-col justify-center items-center bg-stone-800 mx-auto rounded-2xl shadow-lg my-5">
+    
       <Bar
         data={data}
         options={options}
       />
-    </div>
   );
 };
 
