@@ -7,7 +7,7 @@ interface Props {
 
 const Inputs = ({ income, setIncome, spent, setSpent }: Props) => {
   return (
-    <div className="h-50 w-7/8 bg-stone-800 shadow-lg mx-auto rounded-2xl my-10 flex flex-col justify-center items-center gap-2 p-20">
+    <>
       <div className="flex flex-row gap-3">
         <h2 className="text-white md:text-2xl sm:text-xl text-lg">
           Monthly Income:{" "}
@@ -40,7 +40,7 @@ const Inputs = ({ income, setIncome, spent, setSpent }: Props) => {
           className="bg-stone-950 rounded-2xl border border-stone-700 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
         />
       </div>
-    </div>
+    </>
   );
 };
 

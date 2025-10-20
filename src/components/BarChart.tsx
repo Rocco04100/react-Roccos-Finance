@@ -1,4 +1,4 @@
-//import React from 'react'
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
@@ -33,7 +33,7 @@ const BarChart = ({
   };
   const options = {
     layout: {
-      padding: 5,
+      padding: 10,
     },
     plugins: {
       legend: {
@@ -65,7 +65,6 @@ const BarChart = ({
     },
   };
   return (
-    
       <Bar
         data={data}
         options={options}
