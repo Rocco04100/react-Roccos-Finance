@@ -15,14 +15,14 @@ function App() {
 
   const calculateFutureValue = (years: number) => {
     //Compound interest math helper for bar Chart
-    const monthlyPayment = saved; // P
-    const monthlyRate = interestRate / 100 / 12; // i
-    const numMonths = years * 12; // n
+    const monthlyPayment = saved; // P --> amount of monthly deposit
+    const monthlyRate = interestRate / 100 / 12; // r --> interest rate
+    const numMonths = years * 12; // n --> number of months
 
     if (monthlyRate === 0) {
       return monthlyPayment * numMonths;
     }
-
+    // Compound interest calculation P * ((1+r)^n - 1 )/r
     const futureValue =
       (monthlyPayment * (Math.pow(1 + monthlyRate, numMonths) - 1)) /
       monthlyRate;
@@ -52,7 +52,7 @@ function App() {
         </div>
         <div className="max-h-200 max-w-5xl w-full flex flex-col justify-center items-center bg-stone-800 mx-auto rounded-3xl shadow-lg my-5 sm:p-5 hover:shadow-2xl ">
           <h1 className="text-3xl text-white font-bold text-center mb-4">
-            See How Your Money Grows
+            See How Your Money Can Grow
           </h1>
           <div className="w-full max-w-md my-4">
             <Slider
