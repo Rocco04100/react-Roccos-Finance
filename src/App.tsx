@@ -71,11 +71,6 @@ function App() {
             ]}
           />
         </div>
-
-        <div className="border border-black-600 h-150 mx-10 hover:shadow-3xl rounded-3xl">
-          slider and chart showing how much you could have if you save different
-          percentages
-        </div>
       </div>
     </>
   );
