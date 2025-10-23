@@ -31,6 +31,7 @@ const DoughnutChart = ({
     ],
   };
   const options = {
+    maintainAspectRatio: false,
     layout: {
       padding: 40,
     },
@@ -46,10 +47,12 @@ const DoughnutChart = ({
     },
   };
   return (
+    <div className="w-full h-96 flex justify-center">
       <Doughnut
         data={data}
         options={options}
       />
+    </div>
   );
 };
 

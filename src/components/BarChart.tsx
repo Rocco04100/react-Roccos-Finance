@@ -32,9 +32,14 @@ const BarChart = ({
     ],
   };
   const options = {
+    animation: {
+        duration: 0 // No animation on re-render
+      },
+    maintainAspectRatio: false,
     layout: {
-      padding: 10,
+      padding: 5,
     },
+
     plugins: {
       legend: {
         labels: {
@@ -65,10 +70,12 @@ const BarChart = ({
     },
   };
   return (
+    <div className="w-full h-96 flex justify-center">
       <Bar
         data={data}
         options={options}
       />
+    </div>
   );
 };
 

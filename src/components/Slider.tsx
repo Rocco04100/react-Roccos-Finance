@@ -1,9 +1,9 @@
-
 interface Props {
   value: number;
   onChange: (value: number) => void;
+  onMouseUp: (value: number) => void;
 }
-const Slider = ({ value, onChange }: Props) => {
+const Slider = ({ value, onChange, onMouseUp }: Props) => {
   return (
     <div className="flex flex-col items-center w-full">
       <label className="mb-2 text-lg font-medium text-green-500">
@@ -16,7 +16,10 @@ const Slider = ({ value, onChange }: Props) => {
         max="5"
         step="0.1"
         value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={(e) => onChange(Number((e.target as HTMLInputElement).value))}
+        onMouseUp={(e) =>
+          onMouseUp(Number((e.target as HTMLInputElement).value))
+        }
         className="
           w-3/4
           h-2
