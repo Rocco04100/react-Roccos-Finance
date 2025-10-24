@@ -12,7 +12,6 @@ function App() {
   const [income, setIncome] = useState("");
   const [spent, setSpent] = useState("");
   const [interestRate, setInterestRate] = useState(0);
-  const [tempInterestRate, setTempInterestRate] = useState(0);
 
   const cardStyles =
     "border-black-600 my-5 bg-stone-800 min-h-screen w-full rounded-3xl shadow-lg flex flex-col justify-center items-center gap-4 p-8 hover:shadow-2xl";
@@ -21,7 +20,7 @@ function App() {
 
   const calculateFutureValue = (years: number) => {
     //Compound interest math helper for bar Chart
-    const monthlyPayment = saved; // P --> amount of monthly deposit
+    const monthlyPayment = saved > 0 ? saved : 100; // P --> amount of monthly deposit
     const monthlyRate = interestRate / 100 / 12; // r --> interest rate
     const numMonths = years * 12; // n --> number of months
 
@@ -111,15 +110,18 @@ function App() {
           <h1 className="text-3xl text-white font-bold text-center mb-4">
             The Power of compound Interest
           </h1>
+          <h1 className="text-xl text-green-300 font-bold text-center mb-4">
+            Adjust the slider to see how different interest rates affect your savings
+          </h1>
           <div className="w-full max-w-md my-4">
             <Slider
-              value={tempInterestRate}
-              onChange={setTempInterestRate}
+              value={interestRate}
+              onChange={setInterestRate}
               onMouseUp={setInterestRate}
             />
           </div>
           <BarChart
-            titleLabel={`Projected savings at ${tempInterestRate}% interest`}
+            titleLabel={`Projected savings at ${interestRate}% interest`}
             barLabels={["5 Years", "10 Years", "15 Years", "20 Years"]}
             barData={[
               calculateFutureValue(5),
@@ -131,19 +133,21 @@ function App() {
           <div>
             <h1 className="font-bold text-green-400 text-2xl">Key Takeaway:</h1>
             <p className="text-white sm:text-xl text-lg">
-              This chart shows your monthly savings of ${saved} growing over
-              time. This is <strong>compound interest</strong>: your money
-              starts making money for you. Notice how the growth from 15 to 20
-              years is much larger than the growth from 5 to 10 years. That's
-              the magic of compounding. The most important factor is time.
+              {saved > 0
+                ? `This chart shows your monthly savings of ${saved} growing over time. `
+                : "This chart shows your monthly savings growing over time for teaching purposes lets say you save $100. "}
+              This is <strong>compound interest</strong>: your money starts
+              making money for you. Notice how the growth from 15 to 20 years is
+              much larger than the growth from 5 to 10 years. That's the magic
+              of compounding. The most important factor is time.
             </p>
           </div>
           <div className="flex flex-col w-full items-center justify-center">
             <DropDown label="What is compound interest?">
               <span>
                 It's the interest you earn on both your original money{" "}
-                <strong>and</strong> the interest you've already earned. It's
-                what makes your money grow exponentially over time, and it's the
+                <strong>AND</strong> the interest you've already earned. It's
+                what makes your money <strong>grow exponentially</strong> over time, and it's the
                 most powerful tool for building wealth.
               </span>
             </DropDown>
@@ -171,10 +175,9 @@ function App() {
             </DropDown>
           </div>
         </div>
-        {/* -------NEW CARD------- */}
-        <div className={cardStyles}>
 
-        </div>
+        {/* -------NEW CARD HERE------- */}
+  
       </div>
     </>
   );

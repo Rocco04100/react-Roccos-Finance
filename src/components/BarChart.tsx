@@ -1,11 +1,8 @@
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 
 interface Props {
-  // income: number;
-  // spent: number;
   barData?: number[];
   titleLabel?: string;
   barLabels?: string[];
@@ -16,7 +13,6 @@ const BarChart = ({
   titleLabel = "My Bar chart",
   barLabels = ["1", "2", "3", "4"],
 }: Props) => {
-  // const saved = income - spent;
   const data = {
     labels: barLabels,
     datasets: [
@@ -33,7 +29,7 @@ const BarChart = ({
   };
   const options = {
     animation: {
-      duration: 0
+      duration: 0,
     },
     maintainAspectRatio: false,
     layout: {

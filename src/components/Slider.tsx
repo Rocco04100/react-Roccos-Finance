@@ -6,14 +6,10 @@ interface Props {
 const Slider = ({ value, onChange, onMouseUp }: Props) => {
   return (
     <div className="flex flex-col items-center w-full">
-      <label className="mb-2 text-lg font-medium text-green-500">
-        Adjust Annual Saving Percentage
-      </label>
-
       <input
         type="range"
         min="0"
-        max="5"
+        max="10"
         step="0.1"
         value={value}
         onChange={(e) => 
