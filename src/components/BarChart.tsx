@@ -33,8 +33,8 @@ const BarChart = ({
   };
   const options = {
     animation: {
-        duration: 0 // No animation on re-render
-      },
+      duration: 0
+    },
     maintainAspectRatio: false,
     layout: {
       padding: 5,

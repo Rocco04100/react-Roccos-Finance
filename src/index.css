@@ -1,1 +1,4 @@
 @import "tailwindcss";
+strong{
+    color: oklch(79.2% 0.209 151.711);
+}

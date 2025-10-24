@@ -45,7 +45,7 @@ const Inputs = ({ income, setIncome, spent, setSpent }: Props) => {
           value={spent}
           decimalsLimit={2}
           onValueChange={(value) => handleChange(value, setSpent)}
-          className="bg-stone-950 rounded-2xl border border-stone-700 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+          className="bg-stone-950 rounded-2xl border border-stone-700 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition text-red"
         />
       </div>
     </>

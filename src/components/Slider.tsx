@@ -16,8 +16,13 @@ const Slider = ({ value, onChange, onMouseUp }: Props) => {
         max="5"
         step="0.1"
         value={value}
-        onChange={(e) => onChange(Number((e.target as HTMLInputElement).value))}
+        onChange={(e) => 
+          onChange(Number((e.target as HTMLInputElement).value))
+        }
         onMouseUp={(e) =>
+          onMouseUp(Number((e.target as HTMLInputElement).value))
+        }
+        onTouchEnd={(e) =>
           onMouseUp(Number((e.target as HTMLInputElement).value))
         }
         className="
