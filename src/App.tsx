@@ -63,9 +63,10 @@ function App() {
         "Please enter a Monthly Income and Monthly Spent. You can use fake numbers for learning purposes"
       );
       return;
-    }
+    }else{
     setStep(step + 1);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
   };
   const handleBack = () => {
     if (step >= 1) {
@@ -144,7 +145,7 @@ function App() {
               doughnutLabels={[
                 "50% needs",
                 "30% wants",
-                "20% Savings and Debt payoff",
+                "20% Savings/Debt payoff",
               ]}
               titleLabel="Savings vs Spent"
               borderColors={[
