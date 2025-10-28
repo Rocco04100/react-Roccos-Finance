@@ -32,7 +32,7 @@ const DropDown = ({children, label}: Props) => {
       <div
         className={`transition-all duration-300 rounded-lg bg-stone-900 ${
           isOpen
-            ? "max-h-96 opacity-100 scale-[1.02] pointer-events-auto"
+            ? " opacity-100 scale-[1.02] pointer-events-auto"
             : "max-h-0 opacity-0 scale-100 pointer-events-none "
         }`}>
         <div className="p-3">{children}</div>

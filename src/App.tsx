@@ -38,7 +38,7 @@ function App() {
   const buttonStyles = `
   bg-stone-950 text-2xl px-5 text-green-400 font-bold rounded-3xl border border-green-300 hover:bg-stone-900`;
 
-  const saved = Number(income) - Number(spent);
+  const saved = Number((Number(income) - Number(spent)).toFixed(2));
 
   const calculateFutureValue = (years: number) => {
     //Compound interest math helper for bar Chart
@@ -73,7 +73,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center gap-12 py-10">
+      <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center gap-12 py-0">
         <Transition
           show={step === 0}
           as={Fragment}
@@ -166,9 +166,9 @@ function App() {
                 hobbies, subscriptions) 20% for Savings & Debt Payoff.{" "}
                 {Number(income) > 0 &&
                   `Based on your monthly income you have an ideal budget for you is $${
-                    Number(income) / 2
-                  } for needs, $${Number(income) * 0.3} for wants, and $${
-                    Number(income) * 0.2
+                    (Number(income) / 2).toFixed(2)
+                  } for needs, $${(Number(income) * 0.3).toFixed(2)} for wants, and $${
+                    (Number(income) * 0.2).toFixed(2)
                   } `}
                 How does your chart compare to this 20% savings goal?
               </p>
@@ -193,7 +193,7 @@ function App() {
               You're saving{" "}
               <strong>
                 {` ${
-                  Number(saved) > 0 ? (Number(saved) / Number(income)) * 100 : 0
+                  Number(saved) > 0 ? ((Number(saved) / Number(income)) * 100).toFixed(2) : 0
                 }% `}
               </strong>{" "}
               think about how this compares to the 50/30/20 rule
