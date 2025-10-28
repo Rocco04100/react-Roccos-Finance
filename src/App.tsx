@@ -205,7 +205,7 @@ function App() {
             Use this tool to go through your transactions for the month and
             determine if they were a want or need.
           </p>
-          <BudgetInputs />
+          <BudgetInputs spent={Number(spent)}/>
             
         </div>
       </div>
