@@ -7,14 +7,33 @@ import Slider from "./components/Slider";
 import DropDown from "./components/DropDown";
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import BudgetInputs from "./components/BudgetInputs";
 
 function App() {
   const [income, setIncome] = useState("");
   const [spent, setSpent] = useState("");
   const [interestRate, setInterestRate] = useState(0);
 
-  const cardStyles =
-    "border-black-600 my-5 bg-stone-800 min-h-screen w-full rounded-3xl shadow-lg flex flex-col justify-center items-center gap-4 p-8 hover:shadow-2xl";
+  const cardStyles = `
+  border border-stone-700
+  my-5 
+  bg-stone-800/90 backdrop-blur
+  w-full 
+  rounded-2xl 
+  shadow-lg
+  flex flex-col gap-6
+  justify-center 
+  items-center 
+  p-8 sm:p-10
+  transition-shadow duration-300
+  hover:shadow-2xl
+  hover:scale-[1.001]
+  `;
+  const titleStyles = `
+  text-3xl 
+  text-white 
+  font-bold
+  `;
 
   const saved = Number(income) - Number(spent);
 
@@ -37,7 +56,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center">
+      <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center gap-12 py-10">
         <div className={cardStyles}>
           <Intro />
           <Inputs
@@ -73,7 +92,7 @@ function App() {
         {/* -------SAVINGS CARD------- */}
 
         <div className={cardStyles}>
-          <h1 className="text-3xl text-white font-bold ">Spent vs Saved</h1>
+          <h1 className={titleStyles}>Spent vs Saved</h1>
           <DoughnutChart
             doughnutData={[Number(spent), saved > 0 ? saved : 0]}
             doughnutLabels={["Spent", "Saved"]}
@@ -107,11 +126,10 @@ function App() {
         {/* -------COMPOUND INTEREST CARD------- */}
 
         <div className={cardStyles}>
-          <h1 className="text-3xl text-white font-bold text-center mb-4">
-            The Power of compound Interest
-          </h1>
+          <h1 className={titleStyles}>The Power of compound Interest</h1>
           <h1 className="text-xl text-green-300 font-bold text-center mb-4">
-            Adjust the slider to see how different interest rates affect your savings
+            Adjust the slider to see how different interest rates affect your
+            savings
           </h1>
           <div className="w-full max-w-md my-4">
             <Slider
@@ -134,7 +152,7 @@ function App() {
             <h1 className="font-bold text-green-400 text-2xl">Key Takeaway:</h1>
             <p className="text-white sm:text-xl text-lg">
               {saved > 0
-                ? `This chart shows your monthly savings of ${saved} growing over time. `
+                ? `This chart shows your monthly savings of $${saved} growing over time. `
                 : "This chart shows your monthly savings growing over time for teaching purposes lets say you save $100. "}
               This is <strong>compound interest</strong>: your money starts
               making money for you. Notice how the growth from 15 to 20 years is
@@ -147,8 +165,8 @@ function App() {
               <span>
                 It's the interest you earn on both your original money{" "}
                 <strong>AND</strong> the interest you've already earned. It's
-                what makes your money <strong>grow exponentially</strong> over time, and it's the
-                most powerful tool for building wealth.
+                what makes your money <strong>grow exponentially</strong> over
+                time, and it's the most powerful tool for building wealth.
               </span>
             </DropDown>
             <DropDown label="Where can I get compound Interest?">
@@ -177,7 +195,19 @@ function App() {
         </div>
 
         {/* -------NEW CARD HERE------- */}
-  
+        <div className={cardStyles}>
+          <h1 className={titleStyles}>Monthly Budgeting</h1>
+          <p className="text-green-300 sm:text-xl text-lg text-center">
+            Lets look deeper into your spending and see if you could be saving
+            more.
+          </p>
+          <p className="text-white sm:text-xl text-lg text-center">
+            Use this tool to go through your transactions for the month and
+            determine if they were a want or need.
+          </p>
+          <BudgetInputs />
+            
+        </div>
       </div>
     </>
   );
