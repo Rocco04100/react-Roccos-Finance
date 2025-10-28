@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Chart as ChartJS } from "chart.js/auto";
+
 import { Doughnut } from "react-chartjs-2";
 
 interface Props {
