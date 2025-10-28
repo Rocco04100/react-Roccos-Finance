@@ -5,26 +5,25 @@ interface Props {
   doughnutData?: number[];
   titleLabel?: string;
   doughnutLabels?: string[];
+  backgroundColors?: string[];
+  borderColors?: string[];
 }
 
 const DoughnutChart = ({
-  doughnutData = [33,33, 33],
+  doughnutData = [33, 33, 33],
   titleLabel = "My doughnut chart",
   doughnutLabels = ["1", "2", "3"],
+  borderColors = ["rgb(135, 135, 135)", "rgb(0, 255, 13)"],
+  backgroundColors = ["rgba(104, 109, 104, 0.23)", "rgba(4, 255, 34, 0.23)"],
 }: Props) => {
-
-
   const data = {
     labels: doughnutLabels,
     datasets: [
       {
         label: titleLabel,
         data: doughnutData,
-        borderColor: ["rgb(135, 135, 135)", "rgb(0, 255, 13)"],
-        backgroundColor: [
-          "rgba(104, 109, 104, 0.23)",
-          "rgba(4, 255, 34, 0.23)",
-        ],
+        borderColor: borderColors,
+        backgroundColor: backgroundColors,
         hoverOffset: 50,
       },
     ],

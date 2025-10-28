@@ -1,4 +1,10 @@
 @import "tailwindcss";
-strong{
-    color: oklch(79.2% 0.209 151.711);
+strong {
+    display: inline-block;
+  color: oklch(79.2% 0.209 151.711);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+strong:hover {
+  transform: scale(1.05);
+  color: oklch(85% 0.25 151.7);
 }
