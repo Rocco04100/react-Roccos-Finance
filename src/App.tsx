@@ -145,7 +145,7 @@ function App() {
               doughnutLabels={[
                 "50% needs",
                 "30% wants",
-                "20% Savings/Debt payoff",
+                "20% Savings/Debt",
               ]}
               titleLabel="Savings vs Spent"
               borderColors={[
