@@ -63,6 +63,7 @@ function App() {
       <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center gap-12 py-0">
         <Transition
           show={step === 0}
+          unmount
           as={Fragment}
           enter="transition-all duration-700 ease-out"
           enterFrom="opacity-0 translate-y-6 scale-95"
@@ -71,7 +72,14 @@ function App() {
           leaveFrom="opacity-100 translate-y-0 scale-100"
           leaveTo="opacity-0 translate-y-6 scale-95">
           <div className={cardStyles}>
-            <Landing titleStyles={titleStyles} saved={saved} setSpent={setSpent} spent={spent} setIncome={setIncome} income={income}  />
+            <Landing
+              titleStyles={titleStyles}
+              saved={saved}
+              setSpent={setSpent}
+              spent={spent}
+              setIncome={setIncome}
+              income={income}
+            />
             <NavButtons
               handleBack={handleBack}
               handleNext={handleNext}
@@ -83,6 +91,7 @@ function App() {
 
         <Transition
           show={step === 1}
+          unmount
           as={Fragment}
           enter="transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           enterFrom="opacity-0 translate-x-10"
@@ -108,6 +117,7 @@ function App() {
 
         <Transition
           show={step === 2}
+          unmount
           as={Fragment}
           enter="transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           enterFrom="opacity-0 translate-x-10"
