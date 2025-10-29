@@ -2,10 +2,10 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import CompoundInterest from "./components/Pages/CompoundInterest";
-import Savings from "./components/Pages/Savings";
+import CompoundInterest from "./components/Cards/CompoundInterest";
+import Savings from "./components/Cards/Savings";
 import NavButtons from "./components/NavButtons";
-import Landing from "./components/Pages/Landing";
+import Landing from "./components/Cards/Landing";
 //import BudgetInputs from "./components/BudgetInputs";
 
 function App() {

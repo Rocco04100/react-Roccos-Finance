@@ -29,14 +29,11 @@ const DropDown = ({children, label}: Props) => {
         </span>
       </button>
 
-      <div
-        className={`transition-all duration-300 rounded-lg bg-stone-900 ${
-          isOpen
-            ? " opacity-100 scale-[1.02] pointer-events-auto"
-            : "max-h-0 opacity-0 scale-100 pointer-events-none "
-        }`}>
-        <div className="p-3">{children}</div>
-      </div>
+      {isOpen && (
+        <div className={`rounded-b-lg bg-stone-900 p-3 animate-fadeIn`}>
+          <div className="p-3">{children}</div>
+        </div>
+      )}
     </div>
   );
 }

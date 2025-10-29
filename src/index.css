@@ -1,10 +1,22 @@
 @import "tailwindcss";
 strong {
-    display: inline-block;
+  display: inline-block;
   color: oklch(79.2% 0.209 151.711);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 strong:hover {
   transform: scale(1.05);
   color: oklch(85% 0.25 151.7);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
 }
