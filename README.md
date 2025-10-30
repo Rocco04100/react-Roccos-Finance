@@ -1,10 +1,10 @@
 # Financial Literacy Website
 - The goal is to create something that can help people learn about the basics of finances and how important it is to know
   
-## So far given the an income for a month and the expenses it will:
-- Provide an informational doughnut chart showing spent vs saved
-- Show an informational bar chart that shows how much money you will have in a select amount of years at a user selected interest rate
-- Drop Downs that give helpful information
-
+## So far there are 2 lessons:
+- Lesson 1 focused on saving and the 50/30/20 rule learning about wants vs needs
+- Lesson 2 focused on compound interest which accounts have it
+  
 ## Plans
-- Make it more interactive to help learn.
+- Lesson on different bank accounts how to start one
+- Budgetting what to do if your spending too much?
