@@ -18,37 +18,33 @@ const Inputs = ({ income, setIncome, spent, setSpent }: Props) => {
 
   return (
     <>
-      <div className="flex flex-row gap-2">
-        <div className="flex flex-col gap-4">
-          <span className="text-white md:text-2xl sm:text-xl text-lg">
-            Monthly Income:{" "}
-          </span>
-          <span className=" text-white md:text-2xl sm:text-xl text-lg">
-            Money Spent:{" "}
-          </span>
-        </div>
-        <div className="flex flex-col gap-4 sm:gap-6 md:gap-7">
-          <CurrencyInput
-            id="income"
-            name="income"
-            prefix="$"
-            placeholder="$0.00"
-            value={income}
-            decimalsLimit={2}
-            onValueChange={(value) => handleChange(value, setIncome)}
-            className="bg-stone-950 rounded-2xl border border-stone-700 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
-          />
-          <CurrencyInput
-            id="spent"
-            name="spent"
-            prefix="$"
-            placeholder="$0.00"
-            value={spent}
-            decimalsLimit={2}
-            onValueChange={(value) => handleChange(value, setSpent)}
-            className="bg-stone-950 rounded-2xl border border-stone-700 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition text-red"
-          />
-        </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 items-center">
+        <span className="text-white md:text-2xl sm:text-xl text-lg">
+          Monthly Income:{" "}
+        </span>
+        <CurrencyInput
+          id="income"
+          name="income"
+          prefix="$"
+          placeholder="$0.00"
+          value={income}
+          decimalsLimit={2}
+          onValueChange={(value) => handleChange(value, setIncome)}
+          className="bg-stone-950 rounded-2xl border border-stone-700 text-center text-green-300 outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+        />
+        <span className=" text-white md:text-2xl sm:text-xl text-lg">
+          Monthly Costs:{" "}
+        </span>
+        <CurrencyInput
+          id="spent"
+          name="spent"
+          prefix="$"
+          placeholder="$0.00"
+          value={spent}
+          decimalsLimit={2}
+          onValueChange={(value) => handleChange(value, setSpent)}
+          className=" bg-stone-950 rounded-2xl border border-stone-700 text-red-300 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition text-red"
+        />
       </div>
     </>
   );

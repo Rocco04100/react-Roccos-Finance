@@ -4,8 +4,8 @@ import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import CompoundInterest from "./components/Cards/CompoundInterest";
 import Savings from "./components/Cards/Savings";
-import NavButtons from "./components/NavButtons";
 import Landing from "./components/Cards/Landing";
+import Nav from "./components/Nav";
 //import BudgetInputs from "./components/BudgetInputs";
 
 function App() {
@@ -15,18 +15,16 @@ function App() {
 
   const cardStyles = `
   border border-stone-700
-  min-h-screen 
+  h-full
   bg-stone-800/90 backdrop-blur
   w-full 
-  rounded-2xl 
-  shadow-lg
+  rounded-2xl
+  shadow-2xl
   flex flex-col gap-6
   justify-center 
   items-center 
   p-8 sm:p-10
-  transition-shadow duration-300
-  hover:shadow-2xl
-  hover:scale-[1.001]
+
   `;
   const titleStyles = `
   text-4xl 
@@ -40,35 +38,41 @@ function App() {
 
   const saved = Number((Number(income) - Number(spent)).toFixed(2));
 
-  const handleNext = () => {
+ 
+  const handleNavClick = (step: number) => {
     if (income == "" || spent == "") {
       alert(
         "Please enter a Monthly Income and Monthly Spent. You can use fake numbers for learning purposes"
       );
       return;
-    } else if(step < 2){
-      setStep(step + 1);
+    }
+      setStep(step);
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    }
-  };
-  const handleBack = () => {
-    if (step >= 1) {
-      setStep(step - 1);
-    }
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
+  }
 
   return (
     <>
-      <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center gap-12 py-0">
+      <div className="min-h-screen bg-stone-900 sm:px-6 md:px-12 flex flex-col items-center py-0 backdrop-blur gap-1">
+        <Nav
+          lessonList={[
+            { name: "Start", tooltip: "" },
+            { name: "Lesson 1", tooltip: "Savings" },
+            { name: "Lesson 2", tooltip: "Interest" },
+            { name: "Lesson 3", tooltip: "stupid" },
+            { name: "Lesson 4", tooltip: "stupid" },
+            { name: "Lesson 5", tooltip: "stupid" },
+          ]}
+          setStep={handleNavClick}
+          step={step}
+        />
         <Transition
           show={step === 0}
           unmount
           as={Fragment}
-          enter="transition-all duration-700 ease-out"
+          enter="transition-all duration-500 ease-out"
           enterFrom="opacity-0 translate-y-6 scale-95"
           enterTo="opacity-100 translate-y-0 scale-100"
-          leave="transition-all duration-500 ease-in"
+          leave="transition-all duration-300 ease-in"
           leaveFrom="opacity-100 translate-y-0 scale-100"
           leaveTo="opacity-0 translate-y-6 scale-95">
           <div className={cardStyles}>
@@ -80,10 +84,6 @@ function App() {
               setIncome={setIncome}
               income={income}
             />
-            <NavButtons
-              handleBack={handleBack}
-              handleNext={handleNext}
-            />
           </div>
         </Transition>
 
@@ -93,10 +93,10 @@ function App() {
           show={step === 1}
           unmount
           as={Fragment}
-          enter="transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enter="transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
           enterFrom="opacity-0 translate-x-10"
           enterTo="opacity-100 translate-x-0"
-          leave="transition duration-500 ease-in"
+          leave="transition duration-300 ease-in"
           leaveFrom="opacity-100 translate-x-0"
           leaveTo="opacity-0 -translate-x-10">
           <div className={cardStyles}>
@@ -105,10 +105,6 @@ function App() {
               saved={saved}
               income={Number(income)}
               spent={Number(spent)}
-            />
-            <NavButtons
-              handleBack={handleBack}
-              handleNext={handleNext}
             />
           </div>
         </Transition>
@@ -119,10 +115,10 @@ function App() {
           show={step === 2}
           unmount
           as={Fragment}
-          enter="transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enter="transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
           enterFrom="opacity-0 translate-x-10"
           enterTo="opacity-100 translate-x-0"
-          leave="transition duration-500 ease-in"
+          leave="transition duration-300 ease-in"
           leaveFrom="opacity-100 translate-x-0"
           leaveTo="opacity-0 -translate-x-10">
           <div className={cardStyles}>
@@ -130,27 +126,52 @@ function App() {
               titleStyles={titleStyles}
               saved={saved}
             />
-            <NavButtons
-              handleBack={handleBack}
-              handleNext={handleNext}
-            />
           </div>
         </Transition>
 
-        {/*-------NEW CARD HERE------- }
-        <div className={cardStyles}>
-          <h1 className={titleStyles}>Monthly Budgeting</h1>
-          <p className="text-green-300 sm:text-xl text-lg text-center">
-            Lets look deeper into your spending and see if you could be saving
-            more.
-          </p>
-          <p className="text-white sm:text-xl text-lg text-center">
-            Use this tool to go through your transactions for the month and
-            determine if they were a want or need.
-          </p>
-         
-            
-        </div> */}
+        <Transition
+          show={step === 3}
+          unmount
+          as={Fragment}
+          enter="transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enterFrom="opacity-0 translate-x-10"
+          enterTo="opacity-100 translate-x-0"
+          leave="transition duration-300 ease-in"
+          leaveFrom="opacity-100 translate-x-0"
+          leaveTo="opacity-0 -translate-x-10">
+          <div className={cardStyles}>
+            <p>Lesson 4 is still in progress come back soon!</p>
+          </div>
+        </Transition>
+
+        <Transition
+          show={step === 4}
+          unmount
+          as={Fragment}
+          enter="transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enterFrom="opacity-0 translate-x-10"
+          enterTo="opacity-100 translate-x-0"
+          leave="transition duration-300 ease-in"
+          leaveFrom="opacity-100 translate-x-0"
+          leaveTo="opacity-0 -translate-x-10">
+          <div className={cardStyles}>
+            <p>Lesson 4 is still in progress come back soon!</p>
+          </div>
+        </Transition>
+        <Transition
+          show={step === 5}
+          unmount
+          as={Fragment}
+          enter="transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enterFrom="opacity-0 translate-x-10"
+          enterTo="opacity-100 translate-x-0"
+          leave="transition duration-300 ease-in"
+          leaveFrom="opacity-100 translate-x-0"
+          leaveTo="opacity-0 -translate-x-10">
+          <div className={cardStyles}>
+            <p>Lesson 5 is still in progress come back soon!</p>
+          </div>
+        </Transition>
       </div>
     </>
   );
