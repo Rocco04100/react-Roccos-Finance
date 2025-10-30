@@ -21,9 +21,10 @@ const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Pro
       </h1>
       <h3 className="max-w-2xl text-xs sm:text-lg md:text-xl text-gray-200 text-center">
         To start enter a income for a month and how much you spent for the
-        month. <br />We will use these numbers to help you learn later!
+        month. <br />
+        We will use these numbers to help you learn later!
       </h3>
-      
+
       <div className="bg-stone-900 backdrop-blur-md rounded-xl p-6 w-full max-w-lg shadow-lg">
         <Inputs
           income={income}
@@ -36,10 +37,10 @@ const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Pro
         <Transition
           show={income !== "" && spent !== ""}
           as={Fragment}
-          enter="transition-all duration-3000 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          enter="transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
           enterFrom="opacity-0 translate-y-6 scale-95"
           enterTo="opacity-100 translate-y-0 scale-100"
-          leave="transition-all duration-3000 ease-in-out"
+          leave="transition-all duration-1000 ease-in-out"
           leaveFrom="opacity-100 translate-y-0 scale-100"
           leaveTo="opacity-0 translate-y-6 scale-95">
           <p
@@ -51,6 +52,14 @@ const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Pro
               : `You spent $${Math.abs(
                   saved
                 )} more than you earned this month. That's okay! This tool is designed to help. Let's look at the chart below to see the breakdown.`}
+                <br />
+                <br />
+            <span className="hidden sm:flex justify-center text-white">
+              Navigate to Lesson 1 with the menu above!
+            </span>
+            <span className="sm:hidden text-center text-white">
+              Navigate to Lesson 1 with the hamburger menu in the top left!
+            </span>
           </p>
         </Transition>
       </div>
