@@ -6,12 +6,13 @@ interface Props {
   stepShow: number;
 }
 
-const Card = ({ children, step, stepShow }: Props) => {
+const Card = ({ children, step, stepShow}: Props) => {
   const cardStyles = `
   border border-stone-700
-  min-h-screen
   bg-stone-800/90 backdrop-blur
   w-full 
+  my-10
+  sm:my-15
   rounded-2xl
   shadow-2xl
   flex flex-col gap-6
@@ -23,15 +24,16 @@ const Card = ({ children, step, stepShow }: Props) => {
   return (
     <Transition
       show={step === stepShow}
-      
       as={Fragment}
-      enter="transition-all duration-100 ease-out"
-      enterFrom="opacity-80 "
-      enterTo="opacity-100 "
-      leave="transition-all duration-100 ease-in"
-      leaveFrom="opacity-100  "
-      leaveTo="opacity-80 ">
+    //   enter="transition  duration-50 ease-out"
+    //   enterFrom="opacity-80 "
+    //   enterTo="opacity-100 "
+    //   leave="transition  duration-50 ease-in"
+    //   leaveFrom="opacity-100  "
+    //   leaveTo="opacity-80 
+        >
       <div className={cardStyles}>{children}</div>
+    
     </Transition>
   );
 };

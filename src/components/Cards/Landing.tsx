@@ -48,18 +48,11 @@ const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Pro
               saved > 0 ? "text-green-300" : "text-red-300"
             }`}>
             {saved > 0
-              ? `Great!! you saved $${saved} this month! This is the number we can look at to project future growth`
+              ? `Great!! you saved $${saved} this month! This is the number we can look at to project future growth lets look at the next lesson to learn about it!`
               : `You spent $${Math.abs(
                   saved
-                )} more than you earned this month. That's okay! This tool is designed to help. Let's look at the chart below to see the breakdown.`}
-                <br />
-                <br />
-            <span className="hidden sm:flex justify-center text-white">
-              Navigate to Lesson 1 with the menu above!
-            </span>
-            <span className="sm:hidden text-center text-white">
-              Navigate to Lesson 1 with the hamburger menu in the top left!
-            </span>
+                )} more than you earned this month. That's okay! This tool is designed to help. Let's look at the next lesson to see the breakdown.`}
+                
           </p>
         </Transition>
       </div>

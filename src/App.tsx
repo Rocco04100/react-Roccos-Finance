@@ -11,7 +11,7 @@ function App() {
   const [income, setIncome] = useState("");
   const [spent, setSpent] = useState("");
   const [step, setStep] = useState(0);
-  
+
   const titleStyles = `
   text-4xl 
   sm:text-5xl 
@@ -32,7 +32,7 @@ function App() {
       return;
     }
     setStep(step);
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0 });
   };
 
   return (
@@ -104,6 +104,15 @@ function App() {
           stepShow={5}>
           <p>Lesson 5 is still in progress come back soon!</p>
         </Card>
+        <div>
+          {step < 5 && (<button
+            className="bg-stone-700 font-bold border rounded-2xl px-5 py-1 text-2xl mb-5 cursor-pointer hover:bg-stone-500"
+            onClick={() => {
+                handleNavClick(step + 1);
+            }}>
+            Next Lesson
+          </button>)}
+        </div>
       </div>
     </>
   );

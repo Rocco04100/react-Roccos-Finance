@@ -26,7 +26,10 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
             } ${index == 0 ? "rounded-l-2xl" : ""}
                ${index == lessonList.length - 1 ? "rounded-r-2xl" : ""}`}
             onClick={() => setStep(index)}>
-            {l.name}
+            <div className="flex flex-col gap-0">
+              <span className="text-xl">{l.name}</span>
+              <span className="text-xs">{l.tooltip}</span>
+            </div>
           </button>
         ))}
       </div>

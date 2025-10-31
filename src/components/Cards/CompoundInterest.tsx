@@ -167,8 +167,7 @@ const CompoundInterest = ({ titleStyles, saved}: Props) => {
           },
         ]}
       />
-      <div className="flex flex-row gap-10">
-      </div>
+      
    </>
   );
 }
