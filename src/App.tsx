@@ -6,6 +6,7 @@ import Landing from "./components/Cards/Landing";
 import Nav from "./components/Nav";
 import Card from "./components/Cards/Card";
 import SpendingSmart from "./components/Cards/SpendingSmart";
+import SavingOptions from "./components/Cards/SavingOptions";
 //import BudgetInputs from "./components/BudgetInputs";
 
 function App() {
@@ -81,7 +82,7 @@ function App() {
         <Card
           step={step}
           stepShow={3}>
-          <p>Lesson 3 is still in progress come back soon!</p>
+          <SavingOptions />
         </Card>
         {/* -------Lesson 4 Compound Interest CARD------- */}
 

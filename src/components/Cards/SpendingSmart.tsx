@@ -20,7 +20,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
   const inputStyles = `bg-stone-950 rounded-xl border border-stone-700 text-center outline-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 p-1`;
 
   const [transactionName, setTransactionName] = useState("");
-  const [transactionAmount, setTransactionAmount] = useState(0);
+  const [transactionAmount, setTransactionAmount] = useState("");
   const [transactionType, setTransactionType] = useState<"Want" | "Need">(
     "Want"
   );
@@ -30,10 +30,11 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
   const [needsTotal, setNeedsTotal] = useState(0);
 
   const handleAdd = () => {
+    const amount = Number(transactionAmount)
     if (transactionName == "") {
       setErrorMessage("Please set a name for the transaction");
       return;
-    } else if (transactionAmount <= 0 && !isNaN(transactionAmount)) {
+    } else if (amount <= 0 && !isNaN(amount)) {
       setErrorMessage(
         "Please set a non 0 and positive value for the transaction amount"
       );
@@ -43,27 +44,27 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
         "Please a shorter name abreviations are okay for our purposes"
       );
       return;
-    } else if (spent - (transactionsTotal + transactionAmount) < 0) {
-      setErrorMessage("Thats more money than it says you spent this month!");
+    } else if (spent - (transactionsTotal + amount) < 0) {
+      setErrorMessage("Thats more money than you said you spent this month!");
       return;
     }
 
     if (transactionType === "Want") {
-      setWantsTotal(wantsTotal + transactionAmount);
+      setWantsTotal(wantsTotal + amount);
     } else if (transactionType === "Need") {
-      setNeedsTotal(needsTotal + transactionAmount);
+      setNeedsTotal(needsTotal + amount);
     }
     setTransactions([
       ...transactions,
       {
         name: transactionName,
-        amount: transactionAmount,
+        amount: amount,
         type: transactionType as "Want" | "Need",
       },
     ]);
 
     setTransactionName("");
-    setTransactionAmount(0);
+    setTransactionAmount("");
     setTransactionType("Want");
     setErrorMessage("");
   };
@@ -138,11 +139,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
               className={inputStyles}
               value={transactionAmount}
               onValueChange={(value) => {
-                if (!isNaN(Number(value))) {
-                  setTransactionAmount(Number(value));
-                } else {
-                  setTransactionAmount(0);
-                }
+               setTransactionAmount(value || "0");
               }}
             />
           </div>
@@ -197,11 +194,15 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
         )}
         <h1>Your Wants vs Needs</h1>
         <DoughnutChart
-          doughnutData={[needsTotal, wantsTotal, saved]}
+          doughnutData={[needsTotal, wantsTotal, saved > 0 ? saved : 0]}
           doughnutLabels={[
-            `${(needsTotal / income) * 100}% needs`,
-            `${(wantsTotal / income) * 100}% wants`,
-            `${(((income-transactionsTotal) / income) * 100)}% Savings/Debt`,
+            `${((needsTotal / income) * 100).toFixed(2)}% needs`,
+            `${((wantsTotal / income) * 100).toFixed(2)}% wants`,
+            `${
+              (income - transactionsTotal) >= 0
+                ? (((income - transactionsTotal) / income) * 100).toFixed(2)
+                : 0
+            }% Savings/Debt`,
           ]}
           borderColors={[
             "rgb(180, 80, 80)",
