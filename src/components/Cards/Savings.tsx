@@ -4,16 +4,15 @@ import DropDown from '../DropDown';
 import Quiz from '../Quiz';
 
 interface Props{
-    titleStyles: string;
     income: number;
     spent: number;
     saved:number;
 }
 
-const Savings = ({titleStyles, income, spent, saved}: Props) => {
+const Savings = ({ income, spent, saved}: Props) => {
   return (
     <>
-      <h1 className={titleStyles}> The 50/30/20 rule</h1>
+      <h1> The 50/30/20 rule</h1>
       <DoughnutChart
         doughnutData={[50, 30, 20]}
         doughnutLabels={["50% needs", "30% wants", "20% Savings/Debt"]}
@@ -29,8 +28,9 @@ const Savings = ({titleStyles, income, spent, saved}: Props) => {
           "rgba(0, 220, 80, 0.35)",
         ]}
       />
+
       <div>
-        <h1 className="font-bold text-green-400 text-2xl">Key Takeaway:</h1>
+        <h2 className="font-bold text-green-400 text-2xl">Key Takeaway:</h2>
         <p className="text-white sm:text-xl text-lg">
           A powerful financial goal is to increase the 'Saved' portion. A
           popular guideline is the <strong>50/30/20 rule</strong>: 50% for Needs
@@ -53,7 +53,7 @@ const Savings = ({titleStyles, income, spent, saved}: Props) => {
         <br />
         Ex: Restaurants, clothes shopping, streaming, video games, hobbies
       </DropDown>
-      <h1 className={titleStyles}> Your Spent vs Saved</h1>
+      <h1> Your Spent vs Saved</h1>
       <DoughnutChart
         doughnutData={[Number(spent), saved > 0 ? saved : 0]}
         doughnutLabels={["Spent", "Saved"]}
@@ -85,9 +85,10 @@ const Savings = ({titleStyles, income, spent, saved}: Props) => {
             <li>Set a weekly spending limit for fun purchases</li>
           </ul>
           <br />
-          Shifting just $20-50 a week moves you closer to that target fast.
+          Shifting just $20-50 a week moves you closer to that target fast. We
+          will dive deeper in this topic in a later lesson.
           {Number(saved) <= 0
-            ? " If you spent more than you earned, focus on tracking first awareness saves money"
+            ? " If you spent more than you earned, focus on tracking first awareness saves money we will go into this in the next lesson"
             : ""}
         </DropDown>
         <DropDown label="What can I do with my savings?">
@@ -98,7 +99,7 @@ const Savings = ({titleStyles, income, spent, saved}: Props) => {
           <br />
           <br />
           After that, here are smart priorities for your savings:
-          <ul className="list-disc list-inside space-y-2">
+          <ul>
             <li>
               <strong>Pay down high-interest debt</strong> (credit cards, BNPL).
               Paying off 20% interest is like earning 20% guaranteed.
@@ -120,7 +121,7 @@ const Savings = ({titleStyles, income, spent, saved}: Props) => {
           </ul>
           <br />
           Small amounts add up. The key is to give every dollar a job that moves
-          you forward.
+          you forward. We will dive deeper in this topic in a later lesson.
         </DropDown>
       </div>
       <Quiz

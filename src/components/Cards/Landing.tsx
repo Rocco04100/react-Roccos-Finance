@@ -9,15 +9,14 @@ interface Props {
   spent: string;
   setSpent: (value: string) => void;
   saved: number;
-  titleStyles: string;
 }
 
-const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Props) => {
+const Landing = ({ income, setIncome, spent, setSpent, saved}: Props) => {
   return (
     <>
       <h1
-        className={`${titleStyles} text-3xl md:text-5xl font-bold mb-6 tracking-tight drop-shadow-lg`}>
-        Welcome to Rocco's Financial Literacy Website
+        className={` text-3xl md:text-5xl font-bold mb-6 tracking-tight drop-shadow-lg`}>
+        Welcome to Rocco's Beginner Financial Literacy Guide
       </h1>
       <h3 className="max-w-2xl text-xs sm:text-lg md:text-xl text-gray-200 text-center">
         To start enter a income for a month and how much you spent for the
@@ -43,7 +42,7 @@ const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Pro
           leave="transition-all duration-1000 ease-in-out"
           leaveFrom="opacity-100 translate-y-0 scale-100"
           leaveTo="opacity-0 translate-y-6 scale-95">
-          <p
+          <h4
             className={`text-2xl text-center my-10 ${
               saved > 0 ? "text-green-300" : "text-red-300"
             }`}>
@@ -53,7 +52,7 @@ const Landing = ({ income, setIncome, spent, setSpent, saved, titleStyles }: Pro
                   saved
                 )} more than you earned this month. That's okay! This tool is designed to help. Let's look at the next lesson to see the breakdown.`}
                 
-          </p>
+          </h4>
         </Transition>
       </div>
     </>

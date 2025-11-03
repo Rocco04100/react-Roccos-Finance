@@ -1,41 +1,39 @@
-import React, { useState } from 'react'
-import DropDown from '../DropDown';
-import Quiz from '../Quiz';
-import Slider from '../Slider';
-import BarChart from '../Charts/BarChart';
+import React, { useState } from "react";
+import DropDown from "../DropDown";
+import Quiz from "../Quiz";
+import Slider from "../Slider";
+import BarChart from "../Charts/BarChart";
 interface Props {
-    cardStyles?: string;
-    titleStyles: string;
-    saved: number;
-
+  cardStyles?: string;
+  saved: number;
 }
 
-const CompoundInterest = ({ titleStyles, saved}: Props) => {
- const [interestRate, setInterestRate] = useState(0);
+const CompoundInterest = ({ saved }: Props) => {
+  const [interestRate, setInterestRate] = useState(0);
 
-    const calculateFutureValue = (years: number) => {
-      //Compound interest math helper for bar Chart
-      const monthlyPayment = saved > 0 ? saved : 100; // P --> amount of monthly deposit
-      const monthlyRate = interestRate / 100 / 12; // r --> interest rate
-      const numMonths = years * 12; // n --> number of months
+  const calculateFutureValue = (years: number) => {
+    //Compound interest math helper for bar Chart
+    const monthlyPayment = saved > 0 ? saved : 100; // P --> amount of monthly deposit
+    const monthlyRate = interestRate / 100 / 12; // r --> interest rate
+    const numMonths = years * 12; // n --> number of months
 
-      if (monthlyRate === 0) {
-        return monthlyPayment * numMonths;
-      }
-      // Compound interest calculation P * ((1+r)^n - 1 )/r
-      const futureValue =
-        (monthlyPayment * (Math.pow(1 + monthlyRate, numMonths) - 1)) /
-        monthlyRate;
+    if (monthlyRate === 0) {
+      return monthlyPayment * numMonths;
+    }
+    // Compound interest calculation P * ((1+r)^n - 1 )/r
+    const futureValue =
+      (monthlyPayment * (Math.pow(1 + monthlyRate, numMonths) - 1)) /
+      monthlyRate;
 
-      return Math.round(futureValue * 100) / 100;
-    };
+    return Math.round(futureValue * 100) / 100;
+  };
   return (
     <>
-      <h1 className={titleStyles}>The Power of compound Interest</h1>
-      <h1 className="text-xl text-green-300 font-bold text-center mb-4">
+      <h1>The Power of compound Interest</h1>
+      <h2 className="text-xl text-green-300 font-bold text-center mb-4">
         Adjust the slider to see how different interest rates affect your
         savings
-      </h1>
+      </h2>
       <div className="w-full max-w-md my-4">
         <Slider
           value={interestRate}
@@ -54,7 +52,7 @@ const CompoundInterest = ({ titleStyles, saved}: Props) => {
         ]}
       />
       <div>
-        <h1 className="font-bold text-green-400 text-2xl">Key Takeaway:</h1>
+        <h2 className="font-bold text-green-400 text-2xl">Key Takeaway:</h2>
         <p className="text-white sm:text-xl text-lg">
           {saved > 0
             ? `This chart shows your monthly savings of $${saved} growing over time. `
@@ -167,9 +165,8 @@ const CompoundInterest = ({ titleStyles, saved}: Props) => {
           },
         ]}
       />
-      
-   </>
+    </>
   );
-}
+};
 
-export default CompoundInterest
+export default CompoundInterest;

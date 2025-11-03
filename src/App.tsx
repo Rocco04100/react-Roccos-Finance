@@ -5,6 +5,7 @@ import Savings from "./components/Cards/Savings";
 import Landing from "./components/Cards/Landing";
 import Nav from "./components/Nav";
 import Card from "./components/Cards/Card";
+import SpendingSmart from "./components/Cards/SpendingSmart";
 //import BudgetInputs from "./components/BudgetInputs";
 
 function App() {
@@ -12,15 +13,6 @@ function App() {
   const [spent, setSpent] = useState("");
   const [step, setStep] = useState(0);
 
-  const titleStyles = `
-  text-4xl 
-  sm:text-5xl 
-  font-extrabold 
-  text-transparent 
-  bg-clip-text 
-  bg-gradient-to-r from-green-400 to-emerald-300
-  mb-6 text-center
-  `;
 
   const saved = Number((Number(income) - Number(spent)).toFixed(2));
 
@@ -41,9 +33,9 @@ function App() {
         lessonList={[
           { name: "Start", tooltip: "" },
           { name: "Lesson 1", tooltip: "Savings" },
-          { name: "Lesson 2", tooltip: "Interest" },
-          { name: "Lesson 3", tooltip: "In Progress!" },
-          { name: "Lesson 4", tooltip: "In Progress!" },
+          { name: "Lesson 2", tooltip: "Spending Smart" },
+          { name: "Lesson 3", tooltip: "What to do with Savings" },
+          { name: "Lesson 4", tooltip: "Compound Interest" },
           { name: "Lesson 5", tooltip: "In Progress!" },
         ]}
         setStep={handleNavClick}
@@ -54,7 +46,6 @@ function App() {
           step={step}
           stepShow={0}>
           <Landing
-            titleStyles={titleStyles}
             saved={saved}
             setSpent={setSpent}
             spent={spent}
@@ -63,40 +54,41 @@ function App() {
           />
         </Card>
 
-        {/* -------SAVINGS CARD------- */}
+        {/* -------Lesson 1 SAVINGS CARD------- */}
 
         <Card
           step={step}
           stepShow={1}>
           <Savings
-            titleStyles={titleStyles}
             saved={saved}
             income={Number(income)}
             spent={Number(spent)}
           />
         </Card>
 
-        {/* -------COMPOUND INTEREST CARD------- */}
-
+        {/* -------Lesson 2 Spending Smart Card------- */}
         <Card
           step={step}
           stepShow={2}>
-          <CompoundInterest
-            titleStyles={titleStyles}
+          <SpendingSmart
+            spent={Number(spent)}
             saved={saved}
+            income={Number(income)}
           />
         </Card>
-        {/* -------Lesson 3------- */}
+
+        {/* -------Lesson What to do with my savings? 3------- */}
         <Card
           step={step}
           stepShow={3}>
           <p>Lesson 3 is still in progress come back soon!</p>
         </Card>
-        {/* -------Lesson 4------- */}
+        {/* -------Lesson 4 Compound Interest CARD------- */}
+
         <Card
           step={step}
           stepShow={4}>
-          <p>Lesson 4 is still in progress come back soon!</p>
+          <CompoundInterest saved={saved} />
         </Card>
         {/* -------Lesson 5------- */}
         <Card
@@ -105,13 +97,15 @@ function App() {
           <p>Lesson 5 is still in progress come back soon!</p>
         </Card>
         <div>
-          {step < 5 && (<button
-            className="bg-stone-700 font-bold border rounded-2xl px-5 py-1 text-2xl mb-5 cursor-pointer hover:bg-stone-500"
-            onClick={() => {
+          {step < 5 && (
+            <button
+              className="bg-stone-700 font-bold border rounded-2xl px-5 py-1 text-2xl mb-5 cursor-pointer hover:bg-stone-500"
+              onClick={() => {
                 handleNavClick(step + 1);
-            }}>
-            Next Lesson
-          </button>)}
+              }}>
+              Next Lesson
+            </button>
+          )}
         </div>
       </div>
     </>

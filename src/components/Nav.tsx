@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Transition } from "@headlessui/react";
+
 interface Lesson {
   name: string;
   tooltip?: string;
@@ -46,9 +48,17 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
             </div>
           </button>
         )}
-        {menuOpen && (
+        <Transition
+          show={menuOpen}
+          enter="transform transition duration-300 ease-in-out"
+          enterFrom="-translate-x-full opacity-0"
+          enterTo="translate-x-0 opacity-100"
+          leave="transform transition duration-300 ease-in-out"
+          leaveFrom="translate-x-0 opacity-100"
+          leaveTo="-translate-x-full opacity-0"
+          unmount>
           <div
-            className={` fixed top-0 left-0 h-screen w-2/3 sm:w-1/4 bg-stone-900 flex flex-col z-50 shadow-xl overflow-y-scroll`}>
+            className={` fixed top-0 left-0 min-h-9/10 w-2/3 sm:w-1/4 bg-stone-900 flex flex-col z-50 shadow-xl overflow-y-scroll rounded-xl`}>
             <div className="w-full flex flex-row justify-end text-red-500 text-2xl pr-3">
               <button
                 className=" cursor-pointer hover:text-red-400"
@@ -77,7 +87,7 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
               </button>
             ))}
           </div>
-        )}
+        </Transition>
       </div>
     </>
   );
