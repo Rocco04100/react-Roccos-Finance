@@ -86,22 +86,21 @@ const Savings = ({ income, spent, saved}: Props) => {
           </ul>
           <br />
           Shifting just $20-50 a week moves you closer to that target fast. We
-          will dive deeper in this topic in a later lesson.
+          will dive deeper in this topic in lesson 2.
           {Number(saved) <= 0
             ? " If you spent more than you earned, focus on tracking first awareness saves money we will go into this in the next lesson"
             : ""}
         </DropDown>
         <DropDown label="What can I do with my savings?">
           The first step is building an <strong>emergency fund</strong>. Aim for
-          3-6 months of your <strong>spent</strong> amount saved ($
-          {Number(spent) * 3} to ${Number(spent) * 6}). Keep it in a safe,
-          easy-access account like a High-Yield Savings Account (HYSA).
+          3-6 months of your <strong>Monthly Costs</strong> amount saved about: ($
+          {Number(spent) * 3} to ${Number(spent) * 6}). We will go dive deeper into this in lesson 3.
           <br />
           <br />
           After that, here are smart priorities for your savings:
           <ul>
             <li>
-              <strong>Pay down high-interest debt</strong> (credit cards, BNPL).
+              <strong>Pay down high-interest debt</strong> (credit cards, personal loans).
               Paying off 20% interest is like earning 20% guaranteed.
             </li>
             <li>
@@ -135,7 +134,7 @@ const Savings = ({ income, spent, saved}: Props) => {
               { text: "Video Games", isAnswer: false },
             ],
             feedback:
-              "Needs are essentials like houseing, food, and utiilities. Wants are optional expenses like video games they may be nice but not a necesity",
+              "Needs are essentials like housing, food, and utilities. Wants are optional expenses like video games they may be nice but not a necessity",
           },
           {
             question:

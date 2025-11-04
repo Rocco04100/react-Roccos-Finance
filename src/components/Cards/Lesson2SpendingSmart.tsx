@@ -41,7 +41,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
       return;
     } else if (transactionName.length > 12) {
       setErrorMessage(
-        "Please a shorter name abreviations are okay for our purposes"
+        "Please a shorter name abbreviations are okay for our purposes"
       );
       return;
     } else if (spent - (transactionsTotal + amount) < 0) {
@@ -113,12 +113,12 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
         </div>
       </DropDown>
       <div className="flex flex-col items-center gap-4 w-full">
-        <div className="flex flex-row gap-2 text-white w-full text-center bg-stone-900 border border-stone-700 p-3 rounded-xl justify-center">
-          <div className="flex flex-col gap-1 min-w-30">
+        <div className="flex flex-row gap-2 text-white w-full text-center bg-stone-900 min-h-40 border border-stone-700 px-1 rounded-xl justify-center text-xs sm:text-sm md:text-md">
+          <div className="flex flex-col gap-1 min-w-30 justify-center">
             <h2 className="">Name</h2>
             <input
               type="text"
-              name="trasactionName"
+              name="transactionName"
               placeholder="Rent"
               id="name"
               value={transactionName}
@@ -128,7 +128,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
               }}
             />
           </div>
-          <div className="flex flex-col gap-1 min-w-40">
+          <div className="flex flex-col gap-1 min-w-40 justify-center">
             <h2 className="">Transaction Amount</h2>
             <CurrencyInput
               id="spent"
@@ -139,11 +139,11 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
               className={inputStyles}
               value={transactionAmount}
               onValueChange={(value) => {
-               setTransactionAmount(value || "0");
+                setTransactionAmount(value || "0");
               }}
             />
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 justify-center">
             <h2>Type</h2>
 
             <select
@@ -160,7 +160,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
           </div>
           <div className="flex flex-col justify-center">
             <button
-              className={`px-2 text-green-400 bg-stone-950 rounded-2xl min-w-10 hover:bg-stone-900 transition border border-stone-700`}
+              className={`px-4 py-1 mt-5 text-green-400 bg-stone-950 rounded-2xl min-w-10 hover:bg-stone-800 transition border border-stone-700 font-bold`}
               onClick={handleAdd}>
               Add
             </button>
@@ -171,7 +171,6 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
           <strong> ${spent - transactionsTotal}</strong>
         </h2>
         <h3 className="text-red-300">{errorMessage}</h3>
-
         {transactions.length > 0 && (
           <div className="bg-stone-900 p-4 rounded-2xl border border-stone-700 w-9/10">
             <h2 className="text-xl text-white my-2">Transactions:</h2>
@@ -192,129 +191,130 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
             ))}
           </div>
         )}
-        <h1>Your Wants vs Needs</h1>
-        <DoughnutChart
-          doughnutData={[needsTotal, wantsTotal, saved > 0 ? saved : 0]}
-          doughnutLabels={[
-            `${((needsTotal / income) * 100).toFixed(2)}% needs`,
-            `${((wantsTotal / income) * 100).toFixed(2)}% wants`,
-            `${
-              (income - transactionsTotal) >= 0
-                ? (((income - transactionsTotal) / income) * 100).toFixed(2)
-                : 0
-            }% Savings/Debt`,
-          ]}
-          borderColors={[
-            "rgb(180, 80, 80)",
-            "rgb(80, 90, 160)",
-            "rgb(0, 220, 80)",
-          ]}
-          backgroundColors={[
-            "rgba(180, 80, 80, 0.4)",
-            "rgba(80, 90, 160, 0.4)",
-            "rgba(0, 220, 80, 0.35)",
-          ]}
-        />
-        {/* Key Takeaway */}
-        <div className="my-4">
-          <h2 className="font-bold text-green-400 text-xl">Key Takeaway:</h2>
-          <p className="text-white sm:text-lg text-base">
-            Tracking your spending is the most important part of trying to save
-            more. You're spending{" "}
-            <strong>{((spent / income) * 100).toFixed(2)}%</strong> of your
-            income. If you're in a money tight situation the most important
-            first step to get out is knowing where every dime and dollar goes,
-            then focus on limiting spending on wants.
-          </p>
-        </div>
-        {/* DropDown sections */}
-        <div className="flex flex-col w-full gap-4">
-          <DropDown label="Examples of Reducing Wants">
-            <ul>
-              <li>
-                <strong>Pause unnecessary subscriptions:</strong> Skip Netflix
-                or Spotify for a month. You could save $15–$20!
-              </li>
-              <li>
-                <strong>Cook at home:</strong> Instead of ordering takeout twice
-                a week, cook meals at home to save $30+.
-              </li>
-              <li>
-                <strong>Set a weekly limit:</strong> Only spend $25 on
-                entertainment or treats each week.
-              </li>
-            </ul>
-            <br />
-            Saving is up to your decisions. Being smart with your spending is
-            how you can <strong> invest in your future</strong>.
-          </DropDown>
-          <DropDown label="What if My Needs Are Too High?">
-            <ul className="list-disc pl-5">
-              <li>
-                <strong>Reevaluate your subscriptions and bills:</strong> Are
-                there any essential services you can downgrade or negotiate?
-                Example: switch to a cheaper phone or internet plan.
-              </li>
-              <li>
-                <strong>Look for cheaper alternatives:</strong> Shop at discount
-                grocery stores or consider meal prepping to reduce food costs.
-              </li>
-              <li>
-                <strong>Consider increasing your income:</strong> Pick up extra
-                work, freelance, or sell unused items to balance your budget.
-              </li>
-              <li>
-                <strong>Prioritize needs:</strong> Focus on absolute necessities
-                first, then try to reduce non-critical needs temporarily.
-              </li>
-            </ul>
-            <br />
-            High needs aren't necessarily bad, but knowing them allows you to
-            make smarter financial decisions.
-          </DropDown>
-        </div>
-
-        {/* Quiz */}
-        <Quiz
-          questions={[
-            {
-              question: "Which of these is a Need?",
-              answers: [
-                { text: "Groceries", isAnswer: true },
-                { text: "Movie Ticket", isAnswer: false },
-                { text: "Video Game", isAnswer: false },
-              ],
-              feedback:
-                "Needs are essentials like food and housing. Wants are optional, like entertainment.",
-            },
-            {
-              question:
-                "If you have extra money after covering needs, what should you do?",
-              answers: [
-                { text: "Spend it all on wants", isAnswer: false },
-                { text: "Save or invest it", isAnswer: true },
-                { text: "Ignore it", isAnswer: false },
-              ],
-              feedback:
-                "Its okay to spend money on wants BUT remember the 50/30/20 rule and try to save at the very least 20% of your income. Remember saving is investing in your future.",
-            },
-            {
-              question:
-                "Which of these is a good way to reduce spending on needs?",
-              answers: [
-                { text: "Cancel your rent", isAnswer: false },
-                {
-                  text: "Buy generic groceries instead of brand-name",
-                  isAnswer: true,
-                },
-                { text: "Skip paying utilities", isAnswer: false },
-              ],
-              feedback:
-                "You can save on needs by choosing cheaper alternatives, like generic groceries, without compromising essentials.",
-            },
-          ]}
-        />
       </div>
+
+      <h1>Your Wants vs Needs</h1>
+      <DoughnutChart
+        doughnutData={[needsTotal, wantsTotal, saved > 0 ? saved : 0]}
+        doughnutLabels={[
+          `${((needsTotal / income) * 100).toFixed(2)}% needs`,
+          `${((wantsTotal / income) * 100).toFixed(2)}% wants`,
+          `${
+            income - transactionsTotal >= 0
+              ? (((income - transactionsTotal) / income) * 100).toFixed(2)
+              : 0
+          }% Savings/Debt`,
+        ]}
+        borderColors={[
+          "rgb(180, 80, 80)",
+          "rgb(80, 90, 160)",
+          "rgb(0, 220, 80)",
+        ]}
+        backgroundColors={[
+          "rgba(180, 80, 80, 0.4)",
+          "rgba(80, 90, 160, 0.4)",
+          "rgba(0, 220, 80, 0.35)",
+        ]}
+      />
+      {/* Key Takeaway */}
+      <div className="my-4">
+        <h2 className="font-bold text-green-400 text-xl">Key Takeaway:</h2>
+        <p className="text-white sm:text-lg text-base">
+          Tracking your spending is the most important part of trying to save
+          more. You're spending{" "}
+          <strong>{((spent / income) * 100).toFixed(2)}%</strong> of your
+          income. If you're in a money tight situation the most important first
+          step to get out is knowing where every dime and dollar goes, then
+          focus on limiting spending on wants.
+        </p>
+      </div>
+      {/* DropDown sections */}
+      <div className="flex flex-col w-full gap-4">
+        <DropDown label="Examples of Reducing Wants">
+          <ul>
+            <li>
+              <strong>Pause unnecessary subscriptions:</strong> Skip Netflix or
+              Spotify for a month. You could save $15–$20!
+            </li>
+            <li>
+              <strong>Cook at home:</strong> Instead of ordering takeout twice a
+              week, cook meals at home to save $30+.
+            </li>
+            <li>
+              <strong>Set a weekly limit:</strong> Only spend $25 on
+              entertainment or treats each week.
+            </li>
+          </ul>
+          <br />
+          Saving is up to your decisions. Being smart with your spending is how
+          you can <strong> invest in your future</strong>.
+        </DropDown>
+        <DropDown label="What if My Needs Are Too High?">
+          <ul className="list-disc pl-5">
+            <li>
+              <strong>Reevaluate your subscriptions and bills:</strong> Are
+              there any essential services you can downgrade or negotiate?
+              Example: switch to a cheaper phone or internet plan.
+            </li>
+            <li>
+              <strong>Look for cheaper alternatives:</strong> Shop at discount
+              grocery stores or consider meal prepping to reduce food costs.
+            </li>
+            <li>
+              <strong>Consider increasing your income:</strong> Pick up extra
+              work, freelance, or sell unused items to balance your budget.
+            </li>
+            <li>
+              <strong>Prioritize needs:</strong> Focus on absolute necessities
+              first, then try to reduce non-critical needs temporarily.
+            </li>
+          </ul>
+          <br />
+          High needs aren't necessarily bad, but knowing them allows you to make
+          smarter financial decisions.
+        </DropDown>
+      </div>
+
+      {/* Quiz */}
+      <Quiz
+        questions={[
+          {
+            question: "Which of these is a Need?",
+            answers: [
+              { text: "Groceries", isAnswer: true },
+              { text: "Movie Ticket", isAnswer: false },
+              { text: "Video Game", isAnswer: false },
+            ],
+            feedback:
+              "Needs are essentials like food and housing. Wants are optional, like entertainment.",
+          },
+          {
+            question:
+              "If you have extra money after covering needs, what should you do?",
+            answers: [
+              { text: "Spend it all on wants", isAnswer: false },
+              { text: "Save or invest it", isAnswer: true },
+              { text: "Ignore it", isAnswer: false },
+            ],
+            feedback:
+              "Its okay to spend money on wants BUT remember the 50/30/20 rule and try to save at the very least 20% of your income. Remember saving is investing in your future.",
+          },
+          {
+            question:
+              "Which of these is a good way to reduce spending on needs?",
+            answers: [
+              { text: "Cancel your rent", isAnswer: false },
+              {
+                text: "Buy generic groceries instead of brand-name",
+                isAnswer: true,
+              },
+              { text: "Skip paying utilities", isAnswer: false },
+            ],
+            feedback:
+              "You can save on needs by choosing cheaper alternatives, like generic groceries, without compromising essentials.",
+          },
+        ]}
+      />
     </>
   );
 };

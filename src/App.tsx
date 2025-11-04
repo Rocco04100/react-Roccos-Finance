@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import CompoundInterest from "./components/Cards/CompoundInterest";
-import Savings from "./components/Cards/Savings";
+import CompoundInterest from "./components/Cards/Lesson5CompoundInterest";
+import Savings from "./components/Cards/Lesson1Savings";
 import Landing from "./components/Cards/Landing";
 import Nav from "./components/Nav";
 import Card from "./components/Cards/Card";
-import SpendingSmart from "./components/Cards/SpendingSmart";
-import SavingOptions from "./components/Cards/SavingOptions";
+import SpendingSmart from "./components/Cards/Lesson2SpendingSmart";
+import EmergencyFund from "./components/Cards/Lesson3EmergencyFund";
 //import BudgetInputs from "./components/BudgetInputs";
 
 function App() {
@@ -35,9 +35,9 @@ function App() {
           { name: "Start", tooltip: "" },
           { name: "Lesson 1", tooltip: "Savings" },
           { name: "Lesson 2", tooltip: "Spending Smart" },
-          { name: "Lesson 3", tooltip: "What to do with Savings" },
-          { name: "Lesson 4", tooltip: "Compound Interest" },
-          { name: "Lesson 5", tooltip: "In Progress!" },
+          { name: "Lesson 3", tooltip: "Emergency Fund" },
+          { name: "Lesson 4", tooltip: "Types of Accounts" },
+          { name: "Lesson 5", tooltip: "Compound Interest" },
         ]}
         setStep={handleNavClick}
         step={step}
@@ -78,25 +78,30 @@ function App() {
           />
         </Card>
 
-        {/* -------Lesson What to do with my savings? 3------- */}
+        {/* -------Lesson 3 Emergency Fund------- */}
         <Card
           step={step}
           stepShow={3}>
-          <SavingOptions />
+          <EmergencyFund
+            saved={saved}
+            spent={Number(spent)}
+          />
         </Card>
         {/* -------Lesson 4 Compound Interest CARD------- */}
 
         <Card
           step={step}
           stepShow={4}>
-          <CompoundInterest saved={saved} />
+          <p>Lesson 4 is still in progress come back soon!</p>
         </Card>
+
         {/* -------Lesson 5------- */}
         <Card
           step={step}
           stepShow={5}>
-          <p>Lesson 5 is still in progress come back soon!</p>
+          <CompoundInterest saved={saved} />
         </Card>
+        {/* -------Next Button------- */}
         <div>
           {step < 5 && (
             <button

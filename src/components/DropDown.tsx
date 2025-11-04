@@ -17,8 +17,8 @@ const DropDown = ({children, label}: Props) => {
       className={`dropdown-container bg-stone-800 text-white rounded-xl shadow-md w-full mx-auto transition-all duration-300 hover:shadow-lg my-2`}>
       <button
         onClick={handleClick}
-        className={`flex justify-between items-center w-full text-left font-semibold rounded-lg bg-stone-900 p-3 hover:bg-stone-700 transition-colors ${
-          isOpen ? "rounded-b-none" : "rounded-b-lg"
+        className={`flex justify-between items-center w-full text-left font-semibold rounded-lg  p-3 hover:bg-stone-700 transition-colors ${
+          isOpen ? "rounded-b-none bg-stone-950" : "rounded-b-lg bg-stone-900"
         }`}>
         <span>{label}</span>
         <span
