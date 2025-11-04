@@ -30,7 +30,7 @@ const CompoundInterest = ({ saved }: Props) => {
   return (
     <>
       <h1>The Power of compound Interest</h1>
-      <h2 className="text-xl text-green-300 font-bold text-center mb-4">
+      <h2 className="text-xl text-green-400 font-bold text-center mb-4">
         Adjust the slider to see how different interest rates affect your
         savings
       </h2>
@@ -55,23 +55,18 @@ const CompoundInterest = ({ saved }: Props) => {
         <h2 className="font-bold text-green-400 text-2xl">Key Takeaway:</h2>
         <p className="text-white sm:text-xl text-lg">
           {saved > 0
-            ? `This chart shows your monthly savings of $${saved} growing over time. `
-            : "This chart shows your monthly savings growing over time for teaching purposes lets say you save $100. "}
-          This is <strong>compound interest</strong>: your money starts making
-          money for you. Notice how the growth from 15 to 20 years is much
-          larger than the growth from 5 to 10 years. That's the magic of
-          compounding. The most important factor is time.
+            ? `This chart shows your monthly savings if you deposit $${saved} every month growing over time. `
+            : "This chart shows your monthly savings growing over time for teaching purposes lets say you save $100 each month. "}
+          At 0% interest you can see that your money is simply just adding every
+          time you add, but with interest your money{" "}
+          <strong> grows exponentially</strong>. This is{" "}
+          <strong>compound interest</strong>: your money starts making money for
+          you. Notice how the growth from 15 to 20 years is much larger than the
+          growth from 5 to 10 years. That's the magic of compounding. The most
+          important factor is time.
         </p>
       </div>
       <div className="flex flex-col w-full items-center justify-center">
-        <DropDown label="What is compound interest?">
-          <span>
-            It's the interest you earn on both your original money{" "}
-            <strong>AND</strong> the interest you've already earned. It's what
-            makes your money <strong>grow exponentially</strong> over time, and
-            it's the most powerful tool for building wealth.
-          </span>
-        </DropDown>
         <DropDown label="Where can I get compound Interest?">
           <p>
             Compound interest is at work in many types of accounts. The main
@@ -150,18 +145,22 @@ const CompoundInterest = ({ saved }: Props) => {
               "Which of these accounts can use compound interest to grow your money?",
             answers: [
               {
-                text: "High-Yield Savings Account (HYSA)",
-                isAnswer: true,
-              },
-              { text: "Index Fund Retirement Account", isAnswer: true },
-              {
                 text: "Checking account with no interest",
                 isAnswer: false,
               },
+              // Consolidated the two correct answers into one for standard quiz format
+              {
+                text: "Both High-Yield Savings Accounts and Investment Accounts",
+                isAnswer: true,
+              },
               { text: "Under your mattress", isAnswer: false },
+              {
+                text: "Only Certificates of Deposit (CDs)",
+                isAnswer: false,
+              },
             ],
             feedback:
-              "Compound interest works in accounts that earn interest or investment returns. Safe options include HYSAs, and higher-growth options include investment accounts like index funds.",
+              "Compound interest works in any account that earns interest or investment returns, including safe HYSAs and high-growth investment accounts.",
           },
         ]}
       />

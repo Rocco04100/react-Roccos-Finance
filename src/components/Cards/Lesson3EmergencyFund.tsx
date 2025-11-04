@@ -70,7 +70,7 @@ const EmergencyFund = ({ saved, spent }: Props) => {
         {saved > 0 && (<p className="text-center text-lg text-white">
           If you start an emergency fund with your savings this month,
           you'll have <strong>${saved.toFixed(2)}</strong> saved, which is{" "}
-          <strong>${progressPercent.toFixed(1)}%</strong> of your 3-month goal!
+          <strong>{progressPercent.toFixed(1)}%</strong> of your 3-month goal!
         </p>)}
       </div>
 

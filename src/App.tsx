@@ -7,13 +7,13 @@ import Nav from "./components/Nav";
 import Card from "./components/Cards/Card";
 import SpendingSmart from "./components/Cards/Lesson2SpendingSmart";
 import EmergencyFund from "./components/Cards/Lesson3EmergencyFund";
+import BankAccounts from "./components/Cards/Lesson4BankAccounts";
 //import BudgetInputs from "./components/BudgetInputs";
 
 function App() {
   const [income, setIncome] = useState("");
   const [spent, setSpent] = useState("");
   const [step, setStep] = useState(0);
-
 
   const saved = Number((Number(income) - Number(spent)).toFixed(2));
 
@@ -38,6 +38,7 @@ function App() {
           { name: "Lesson 3", tooltip: "Emergency Fund" },
           { name: "Lesson 4", tooltip: "Types of Accounts" },
           { name: "Lesson 5", tooltip: "Compound Interest" },
+          { name: "Lesson 6", tooltip: "Types of Investments" },
         ]}
         setStep={handleNavClick}
         step={step}
@@ -87,12 +88,12 @@ function App() {
             spent={Number(spent)}
           />
         </Card>
-        {/* -------Lesson 4 Compound Interest CARD------- */}
+        {/* -------Lesson 4 Bank Accounts------- */}
 
         <Card
           step={step}
           stepShow={4}>
-          <p>Lesson 4 is still in progress come back soon!</p>
+          <BankAccounts />
         </Card>
 
         {/* -------Lesson 5------- */}
@@ -101,9 +102,15 @@ function App() {
           stepShow={5}>
           <CompoundInterest saved={saved} />
         </Card>
+        {/* -------Lesson 6------- */}
+        <Card
+          step={step}
+          stepShow={6}>
+          Lesson 6 is still in progress check back soon!
+        </Card>
         {/* -------Next Button------- */}
         <div>
-          {step < 5 && (
+          {step < 6 && (
             <button
               className="bg-stone-700 font-bold border rounded-2xl px-5 py-1 text-2xl mb-5 cursor-pointer hover:bg-stone-500"
               onClick={() => {
