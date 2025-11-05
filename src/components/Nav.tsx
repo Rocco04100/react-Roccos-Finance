@@ -16,7 +16,7 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
 
   return (
     <>
-      <div className="nav-container hidden sm:flex flex-row w-full fixed top-0 z-50 ">
+      <div className="nav-container hidden md:flex flex-row w-full fixed top-0 z-50 ">
         {lessonList.map((l, index) => (
           <button
             key={index}
@@ -35,7 +35,7 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
           </button>
         ))}
       </div>
-      <div className="sm:hidden">
+      <div className="md:hidden">
         {/* Hamburger Button */}
         {!menuOpen && (
           <button
