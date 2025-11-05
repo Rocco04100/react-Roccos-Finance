@@ -113,13 +113,13 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
         </div>
       </DropDown>
       <div className="flex flex-col items-center gap-4 w-full">
-        <div className="flex flex-row gap-2 text-white w-full text-center bg-stone-900 min-h-40 border border-stone-700 px-1 rounded-xl justify-center text-xs sm:text-sm md:text-md">
-          <div className="flex flex-col gap-1 min-w-30 justify-center">
+        <div className="flex flex-row flex-1 flex-wrap text-white w-full text-center bg-stone-900 min-h-40 border border-stone-700 px-1 rounded-xl justify-center text-xs sm:text-sm md:text-md">
+          <div className="flex flex-col gap-1 justify-center">
             <h2 className="">Name</h2>
             <input
               type="text"
               name="transactionName"
-              placeholder="Rent"
+              placeholder="XXX"
               id="name"
               value={transactionName}
               className={inputStyles}
@@ -128,7 +128,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
               }}
             />
           </div>
-          <div className="flex flex-col gap-1 min-w-40 justify-center">
+          <div className="flex flex-col gap-1 justify-center">
             <h2 className="">Transaction Amount</h2>
             <CurrencyInput
               id="spent"
@@ -160,7 +160,7 @@ const SpendingSmart = ({ spent = 0, saved, income }: Props) => {
           </div>
           <div className="flex flex-col justify-center">
             <button
-              className={`px-4 py-1 mt-5 text-green-400 bg-stone-950 rounded-2xl min-w-10 hover:bg-stone-800 transition border border-stone-700 font-bold`}
+              className={`px-4 py-1 mt-5 text-green-400 bg-stone-950 rounded-2xl hover:bg-stone-800 transition border border-stone-700 font-bold`}
               onClick={handleAdd}>
               Add
             </button>
