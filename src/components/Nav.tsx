@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { useLocation} from "react-router-dom"
+import useGuardedNavigate from "../hooks/useGuardedNavigate";
 
 interface Lesson {
   name: string;
   tooltip?: string;
+  path: string;
 }
 interface Props {
   lessonList: Lesson[];
-  setStep: (step: number) => void;
-  step: number;
+  spent?: string;
+  income?: string;
 }
 
-const Nav = ({ lessonList, setStep, step }: Props) => {
+
+
+const Nav = ({ lessonList, spent = "", income = "" }: Props) => {
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const guardedNavigate = useGuardedNavigate(income, spent);
+  
 
   return (
     <>
@@ -22,12 +30,12 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
             key={index}
             title={l.tooltip}
             className={`border border-stone-700 hover:bg-stone-700 md:text-xl sm:text-lg text-sm w-full ${
-              index == step
+              l.path == location.pathname
                 ? "bg-stone-900 text-green-400"
                 : "bg-stone-800  text-white"
             } ${index == 0 ? "rounded-l-2xl" : ""}
                ${index == lessonList.length - 1 ? "rounded-r-2xl" : ""}`}
-            onClick={() => setStep(index)}>
+            onClick={() => guardedNavigate(l.path)}>
             <div className="flex flex-col gap-0">
               <span className="text-xl">{l.name}</span>
               <span className="text-xs">{l.tooltip}</span>
@@ -71,13 +79,13 @@ const Nav = ({ lessonList, setStep, step }: Props) => {
                 key={index}
                 title={l.tooltip}
                 className={`border border-stone-700 hover:bg-stone-700  w-full cursor-pointer ${
-                  index == step
+                  l.path == location.pathname
                     ? "bg-stone-900 text-green-400"
                     : "bg-stone-800 opacity-80 text-white"
                 } 
                `}
                 onClick={() => {
-                  setStep(index);
+                  guardedNavigate(l.path);
                   setMenuOpen(false);
                 }}>
                 <div className="flex flex-col gap-0">

@@ -1,12 +1,10 @@
-import { Transition } from "@headlessui/react";
-import React, { Fragment, type ReactNode } from "react";
+
+import {type ReactNode } from "react";
 interface Props {
   children: ReactNode;
-  step: number;
-  stepShow: number;
 }
 
-const Card = ({ children, step, stepShow}: Props) => {
+const Card = ({ children}: Props) => {
   const cardStyles = `
   border border-stone-700
   bg-stone-800/90 backdrop-blur
@@ -21,20 +19,17 @@ const Card = ({ children, step, stepShow}: Props) => {
   p-8 sm:p-10
 
   `;
+ 
   return (
-    <Transition
-      show={step === stepShow}
-      as={Fragment}
-    //   enter="transition  duration-50 ease-out"
-    //   enterFrom="opacity-80 "
-    //   enterTo="opacity-100 "
-    //   leave="transition  duration-50 ease-in"
-    //   leaveFrom="opacity-100  "
-    //   leaveTo="opacity-80 
-        >
+    // <Transition
+    //   show={step === stepShow}
+    //   as={Fragment}
+    //     >
+    <>
       <div className={cardStyles}>{children}</div>
-    
-    </Transition>
+
+      {/* </Transition> */}
+    </>
   );
 };
 
