@@ -148,7 +148,6 @@ const CompoundInterest = ({ saved }: Props) => {
                 text: "Checking account with no interest",
                 isAnswer: false,
               },
-              // Consolidated the two correct answers into one for standard quiz format
               {
                 text: "Both High-Yield Savings Accounts and Investment Accounts",
                 isAnswer: true,

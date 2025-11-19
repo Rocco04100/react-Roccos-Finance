@@ -8,6 +8,7 @@ import Card from "./components/Cards/Card";
 import SpendingSmart from "./components/Cards/Lesson2SpendingSmart";
 import EmergencyFund from "./components/Cards/Lesson3EmergencyFund";
 import BankAccounts from "./components/Cards/Lesson4BankAccounts";
+import NavBtn from "./components/NavBtn";
 
 function App() {
   const [income, setIncome] = useState("");
@@ -36,7 +37,7 @@ function App() {
         spent={spent}
         income={income}
       />
-      <div className="min-h-screen bg-stone-900 sm:px-6 mt-5 sm:my-0 md:px-12 flex flex-col items-center py-0 backdrop-blur gap-1">
+      <div className="min-h-3/4 bg-stone-900 sm:px-6 mt-5 sm:my-0 md:px-12 flex flex-col items-center py-0 backdrop-blur">
         <Routes>
           {/* -------LANDING PAGE------- */}
           <Route
@@ -117,6 +118,11 @@ function App() {
             }
           />
         </Routes>
+        <NavBtn
+          income={income}
+          spent={spent}
+          lessonList={lessonList}
+        />
       </div>
     </>
   );

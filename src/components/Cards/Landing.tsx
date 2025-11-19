@@ -31,7 +31,11 @@ const Landing = ({ income, setIncome, spent, setSpent, saved}: Props) => {
           spent={spent}
           setSpent={setSpent}
         />
+        <h3 className="max-w-2xl text-xs sm:text-lg md:text-xl text-gray-200 text-center py-5">
+          You can use real numbers from your life or just fake ones to learn!
+        </h3>
       </div>
+
       <div className="flex w-full items-center justify-center my-10 sm:min-h-[10rem] min-h-[12rem]">
         <Transition
           show={income !== "" && spent !== ""}
@@ -51,7 +55,6 @@ const Landing = ({ income, setIncome, spent, setSpent, saved}: Props) => {
               : `You spent $${Math.abs(
                   saved
                 )} more than you earned this month. That's okay! This tool is designed to help. Let's look at the next lesson to see the breakdown.`}
-                
           </h4>
         </Transition>
       </div>

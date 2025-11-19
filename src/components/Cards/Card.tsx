@@ -27,7 +27,7 @@ const Card = ({ children}: Props) => {
     //     >
     <>
       <div className={cardStyles}>{children}</div>
-
+      
       {/* </Transition> */}
     </>
   );

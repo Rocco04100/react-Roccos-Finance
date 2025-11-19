@@ -152,7 +152,7 @@ const BankAccounts = () => {
           <br />
           <ul className="list-disc list-inside">
             <li>
-              **Similar to HYSA:** MMAs are also **FDIC Insured** and offer
+              <strong>Similar to HYSA:</strong> MMAs are also <strong>FDIC Insure</strong> and offer
               competitive interest rates.
             </li>
             <li>
